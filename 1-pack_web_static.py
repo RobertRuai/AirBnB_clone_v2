@@ -8,7 +8,7 @@ def do_pack():
     """generates a tgz archive"""
     try:
         date = datetime.now().strftime("%Y%m%d%H%M%S")
-        local("mkdir versions")
+        local("mkdir -p versions")
         f = "versions/web_static_{}.tgz".format(date)
         local("tar -cvzf {} web_static".format(f))
         return f
