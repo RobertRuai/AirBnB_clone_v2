@@ -17,7 +17,7 @@ def do_pack():
         f = "versions/web_static_{}.tgz".format(date)
         local("tar -cvzf {} web_static".format(f))
         return f
-    except:
+    except BaseException:
         return None
 
 def do_deploy(archive_path):
