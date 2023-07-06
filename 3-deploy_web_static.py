@@ -13,11 +13,11 @@ def do_pack():
     """generates a tgz archive"""
     try:
         date = datetime.now().strftime("%Y%m%d%H%M%S")
-        local("mkdir versions")
+        local("mkdir -p versions")
         f = "versions/web_static_{}.tgz".format(date)
         local("tar -cvzf {} web_static".format(f))
         return f
-    except e:
+    except:
         return None
 
 def do_deploy(archive_path):
@@ -40,7 +40,7 @@ def do_deploy(archive_path):
     except e:
         return False
 
-def do_deploy():
+def deploy():
     """creates and distributes archive to web-servers"""
     archive_path = do_pack()
     if archive_path is None:
