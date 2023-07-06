@@ -7,17 +7,7 @@ import os.path
 
 env.hosts = ['54.82.173.73', '54.237.69.144']
 env.user = "ubuntu"
-
-def do_pack():
-    """generates a tgz archive"""
-    date = datetime.now().strftime("%Y%m%d%H%M%S")
-    try:
-        local("mkdir -p versions")
-        f = "versions/web_static_{}.tgz".format(date)
-        local("tar -cvzf {} web_static".format(f))
-        return f
-    except e:
-        return None
+env.key_filename = '~/.ssh/school'
 
 def do_deploy(archive_path):
     """ deploy to web server """
