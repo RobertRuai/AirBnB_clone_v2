@@ -9,6 +9,7 @@ env.hosts = ['54.89.182.98', '52.87.20.237']
 env.user = "ubuntu"
 env.key_filename = '~/.ssh/school'
 
+
 def do_pack():
     """generates a tgz archive"""
     try:
@@ -19,6 +20,7 @@ def do_pack():
         return f
     except BaseException:
         return None
+
 
 def do_deploy(archive_path):
     """ deploy to web server """
@@ -39,6 +41,7 @@ def do_deploy(archive_path):
         return True
     except e:
         return False
+
 
 def deploy():
     """creates and distributes archive to web-servers"""
