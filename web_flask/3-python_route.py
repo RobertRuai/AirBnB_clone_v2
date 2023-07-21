@@ -23,6 +23,7 @@ def c(text):
     """displays C followed by input text"""
     return "C " + text.replace('_', ' ')
 
+
 @app.route("/python", strict_slashes=False)
 @app.route("/python/<text>", strict_slashes=False)
 def pycool(text="is cool"):
