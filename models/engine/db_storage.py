@@ -78,3 +78,7 @@ class DBStorage:
             expire_on_commit=False))
         Session = scoped_session(sesh)
         self.__session = Session()
+
+    def close(self):
+        """closes the db session"""
+        self.__session.close()
