@@ -19,7 +19,7 @@ class DBStorage:
 
     def __init__(self):
         """Initialize DBStorage"""
-         # Retrieve MySQL configuration from environment variables
+        # Retrieve MySQL configuration from environment variables
         user = getenv('HBNB_MYSQL_USER')
         pwd = getenv('HBNB_MYSQL_PWD')
         host = getenv('HBNB_MYSQL_HOST')
