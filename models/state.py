@@ -16,12 +16,13 @@ class State(BaseModel, Base):
     if getenv('HBNB_TYPE_STORAGE') == 'db':
         cities = relationship('City', cascade='all, delete', backref='state')
     else:
+
+        name = ""
+
         @property
         def cities(self):
             from models import storage
             city_objs = storage.all(City)
-            # return [city for city in city_objs.values()
-            # if city.state_id == self.id]i
             res = []
             for city in city_objs.values():
                 if city.state_id == self.id:
