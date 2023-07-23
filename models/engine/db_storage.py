@@ -35,7 +35,6 @@ class DBStorage:
         if getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(self.__engine)
 
-
         # Create the session
         self.__session = scoped_session(sessionmaker(bind=self.__engine))
 
