@@ -35,8 +35,6 @@ class DBStorage:
         if getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(self.__engine)
 
-        # Create all tables
-        Base.metadata.create_all(self.__engine)
 
         # Create the session
         self.__session = scoped_session(sessionmaker(bind=self.__engine))
@@ -50,8 +48,9 @@ class DBStorage:
                 key = "{}.{}".format(obj.__class__.__name__, obj.id)
                 objects[key] = obj
         else:
-            for cls in Base.__subclasses__():
-                query = self.__session.query(cls)
+            cls_list = [State, City, User, Place, Review, Amenity]
+            for cs in cls_list:
+                query = self.__session.query(cs)
                 for obj in query:
                     key = "{}.{}".format(obj.__class__.__name__, obj.id)
                     objects[key] = obj
