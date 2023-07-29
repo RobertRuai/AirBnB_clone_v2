@@ -24,7 +24,7 @@ association_table = Table("place_amenity", Base.metadata,
                                  primary_key=True, nullable=False),
                           Column("amenity_id", String(60),
                                  ForeignKey("amenities.id"),
-                                 primary_key=True, nullable=False))
+                                 primary_key=True, nullable=False), mysql_charset='latin1')
 
 
 class Place(BaseModel, Base):
@@ -43,6 +43,7 @@ class Place(BaseModel, Base):
     reviews = relationship("Review", backref="place", cascade="delete")
     amenities = relationship("Amenity", secondary="place_amenity",
                              viewonly=False)
+    __table_args__ = {'mysql_default_charset': 'latin1'}
     amenity_ids = []
 
     if getenv("HBNB_TYPE_STORAGE", None) != "db":

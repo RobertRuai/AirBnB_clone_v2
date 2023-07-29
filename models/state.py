@@ -10,12 +10,12 @@ import models
 
 class State(BaseModel, Base):
     """ State class """
-    __tablename__ = 'states'
-    name = Column(String(128), nullable=False)
-
     # Relationship with City class
     if getenv('HBNB_TYPE_STORAGE') == 'db':
+        __tablename__ = 'states'
+        name = Column(String(128), nullable=False)
         cities = relationship('City', cascade='all, delete', backref='state')
+        __table_args__ = {'mysql_default_charset': 'latin1'}
     else:
         @property
         def cities(self):

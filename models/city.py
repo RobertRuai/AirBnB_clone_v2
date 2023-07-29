@@ -14,6 +14,7 @@ class City(BaseModel, Base):
         state_id = Column(String(60), ForeignKey('states.id'), nullable=False)
         places = relationship("Place", backref="cities",
                               cascade="all, delete, delete-orphan")
+        __table_args__ = {'mysql_default_charset': 'latin1'}
     else:
         state_id = ""
         name = ""
